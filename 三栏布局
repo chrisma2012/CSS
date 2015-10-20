@@ -1,0 +1,47 @@
+
+一、float和div出现顺序
+      CSS代码：
+               <style type="text/css">
+				  .body{
+				  	background-color:white;   //设置网页背景色：白色
+				   }
+			       #container{
+			       	background-color: #eef;
+			       	margin: 20px auto 0 auto;  //设置容器居中
+			       	width: 800px;
+			       	height: 500px;
+			       }
+
+			       #left{
+			       	background-color: blue;
+			       	width:200px;
+			       	height: 100%;
+			       	float: left;        //设置left div向左浮动
+
+			       }
+			        #right{
+			       	width:200px;      //给浮动元素设置width属性值是必须的。因为浏览器需要根据浮动元素的width值给其他元素分配空间
+			       	height: 100%;
+			       	background-color: green;
+			       	float: right;       //设置right div向右浮动
+			       }
+			       #center{
+			       	width: auto;                 //设置center div的width为自动（即减去left和right div后剩余的宽度）
+			       	background-color:black;
+			       	height: 100%;
+			                                      //注意： center div不设置float属性 ！！！！
+			       }
+			      
+				</style>
+
+	   HTML代码：
+	            <div id="container">
+					 <div id="left"></div>
+					 <div id="right"></div>     //注意： 此处div的顺序为left right center ！！
+					 <div id="center"></div> 
+		        </div>
+
+
+		Note:在使用浮动时，源代码的顺序（将Html添加到文件中的顺序）非常重要。浮动元素的HTML必须处在包围它的元素的HTML之前
+
+二、flex-box		       
