@@ -1,47 +1,128 @@
+                           == 多列布局
 
-一、float和div出现顺序
+               --- - -- ------构建基于浮动的布局---------------
+
+   1、把每一列都包在一个带有ID或class属性的<div>标签里面（或者直接给<body>元素设置width、height属性，
+      目的是给各列一个盛装的限制容器）
+   2、把侧边栏<div>浮到右侧或左侧
+   3、给浮动的侧边栏设定一个宽度（始终应该设置宽度）
+   4、给浮动元素添加一个margin-left或margin-right（目的是防止不浮动的元素将浮动的元素包围）
+
+             ----------------让所有列都浮动（3列以上的布局）-------------
+
+    每一个列都完全可以浮动，而不是只有左右侧边栏才能浮动。可以让第一个侧边栏浮到左边，中间列浮到
+  左侧，右侧边栏浮到右侧。这种方法允许设计3个以上的列，前提是只要有足够的空间（宽度）让所有浮动的列都并排.
+  同时要注意的是，超过3列的布局，每一列都得有具体的width值，并且每一列width值之和必须的小于等于外边的容器宽度这与3列布局不同。
+  3列布局时，第3列的width可以设置为auto，也可以直接缺省。
+
+         --------------------HTML元素在流中的顺序规则--------------------
+
+  1、浮动元素必须出现在环绕在他们四周的所有内容之前 (浮动元素即设置了float属性为left或right的
+                       HTML元素，反之没有设置float或者float=none的元素则为非浮动元素)。
+  2、大多数搜索引擎在搜索一个网站时，都是限制所阅读的HTML代码量，而且都是给网页文件开头附近的HTML更大的权值。
+     所以一定要把重要的内容尽可能地放在网页HTML代码的顶部。而一般重要内容都是在非浮动元素中呈现。
+     因此在布局时需要正确的对非浮动元素的位置进行布置。
+
+
+     =========================第一：利用float和HTML元素顺序布局网页======================================
+
+1、float和div出现顺序（3列布局）
       CSS代码：
                <style type="text/css">
-				  .body{
-				  	background-color:white;   //设置网页背景色：白色
-				   }
-			       #container{
-			       	background-color: #eef;
-			       	margin: 20px auto 0 auto;  //设置容器居中
-			       	width: 800px;
-			       	height: 500px;
-			       }
+		  .body{
+		  	background-color:white;   //设置网页背景色：白色
+		   }
+	       #container{
+	       	background-color: #eef;
+	       	margin: 20px auto 0 auto;  //设置容器居中
+	       	width: 800px;
+	       	height: 500px;
+	       }
 
-			       #left{
-			       	background-color: blue;
-			       	width:200px;
-			       	height: 100%;
-			       	float: left;        //设置left div向左浮动
+	       #left{
+	       	background-color: blue;
+	       	width:200px;
+	       	height: 100%;
+	       	float: left;        //设置left div向左浮动
 
-			       }
-			        #right{
-			       	width:200px;      //给浮动元素设置width属性值是必须的。因为浏览器需要根据浮动元素的width值给其他元素分配空间
-			       	height: 100%;
-			       	background-color: green;
-			       	float: right;       //设置right div向右浮动
-			       }
-			       #center{
-			       	width: auto;                 //设置center div的width为自动（即减去left和right div后剩余的宽度）
-			       	background-color:black;
-			       	height: 100%;
-			                                      //注意： center div不设置float属性 ！！！！
-			       }
-			      
-				</style>
+	       }
+	        #right{
+	       	width:200px;      //给浮动元素设置width属性值是必须的。因为浏览器需要根据浮动元素的width值给其他元素分配空间
+	       	height: 100%;
+	       	background-color: green;
+	       	float: right;       //设置right div向右浮动
+	       }
+	       #center{
+	       	width: auto;                 //设置center div的width为自动（即减去left和right div后剩余的宽度）
+	       	background-color:black;
+	       	height: 100%;
+	                                      //注意： center div不设置float属性 ！！！！
+	       }
+	      
+		</style>
 
 	   HTML代码：
 	            <div id="container">
-					 <div id="left"></div>
-					 <div id="right"></div>     //注意： 此处div的顺序为left right center ！！
-					 <div id="center"></div> 
-		        </div>
+			 <div id="left"></div>
+			 <div id="right"></div>     //注意： 此处div的顺序为left right center ！！
+			 <div id="center"></div> 
+		     </div>
 
 
-		Note:在使用浮动时，源代码的顺序（将Html添加到文件中的顺序）非常重要。浮动元素的HTML必须处在包围它的元素的HTML之前
+   Note:在使用浮动时，源代码的顺序（将Html添加到文件中的顺序）非常重要。浮动元素的HTML必须处在包围它的元素的HTML之前
 
 二、flex-box		       
+
+3、float和div出现顺序（3列以上布局）
+   HTML源码：
+		      <body>
+		     
+		       <div id="left"></div>
+		       <div id="right"></div>
+		       <div id="firstMain"></div>
+		       <div id="main"></div>
+		      </body>
+
+   CSS源码：
+                    body div{
+	         	height: 300px
+			}
+		     body{
+		     	margin: 20px;
+		     }
+		  
+		      #left{                    //在HTML流出现顺序：第一
+		      	float: left;                //向左浮动
+		      	width:200px;
+		      	background-color: red;
+		      } 
+		     
+		      #right{                    //在HTML流出现顺序：第二
+		         width: 200px;
+		         background-color: #fdd;
+		         float: left;               //向左浮动
+		      }
+		      #firstMain{                //在HTML流出现顺序：第三
+		      	float: left;                //向左浮动
+		      	width: 200px;
+		      	background-color: #aaa;
+		      }
+		       #main{                     //在HTML流出现顺序：第四
+		      	background-color: black;
+		      	float: right;               //向右浮动
+		      	width: 200px;
+	
+		      }
+	
+	
+		      ===========================第二：利用float和margin负值布局网页==========================
+	
+		   1、将所有网页内容都包在一个外围<div>中
+		   2、给这个外围<div>设定一个固定的宽度
+		   3、把每个列都包在一个带有ID或CLASS属性的<div>标签里面
+		   4、让每个列的分区都浮动起来
+		   5、给每个列设定宽度
+		   6、给main column添加一个left margin
+		   7、在left sidebar的<div> 中设置一个margin负值
+	
+		   注：布局的元素有main column、left sidebar、right sidebar。
