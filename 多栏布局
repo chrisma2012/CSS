@@ -1,0 +1,32 @@
+
+
+ 
+ 一、主要属性（2015年10月）
+              根据测试，以下属性在使用时并不需要强制设定文本所在容器的高度或者宽度才能使用。
+
+   column-count ： 分栏数目。最新版的webkit内核浏览器和火狐浏览器均不直接支持，webkit需要添加-webkit-前缀，火狐需要添加-moz-。
+                             而微软的EDGE和IE 11均能直接支持，但6-9则不支持。
+   column-width:   根据窗口大小自动调整分栏数目。单位一般使用 rem 。支持情况与column-count相同。
+   column-rule:    分栏间分割线的样式，设置方式与border相同。
+   colunm-gap:     分割线两侧的间距。
+   column-fill：   值：auto，balance。
+   column-span:    目标元素的跨栏显示。值：1和all。但目前webkit内核浏览器和火狐浏览器都暂未支持。
+
+    为避免标题和正文出现在两个栏，必须告诉浏览器你想要在哪里开始分栏：
+       break-before:  auto
+                      always
+                      avoid
+                      column                在目标元素前分栏
+                      avoid-column    不允许在目标元素前分栏
+
+       break-after:   auto
+                      always
+                      avoid
+                      column                在目标元素后分栏
+                      avoid-column    不允许在目标元素后分栏
+
+       break-inside:  auto
+                      always
+                      avoid
+                      column
+                      avoid-column 
