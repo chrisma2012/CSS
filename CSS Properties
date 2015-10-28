@@ -100,6 +100,56 @@
                    background：color，image，attachment，position。
 
 -------------------------------------------------------------------------------------------------------
-六、表格
+六、选择器
 
+    1、元素选择器 ：         E {}
+    2、属性选择器：          E[attr] {}
+    3、ID选择器：            #selector {}
+    4、CLASS选择器：         .class{}
+    5、包含选择器：          selector1 selector2 {}  //在selector1元素内的元素selector2，并不一定是子元素，可以是孙子元素。
+    6、子选择器：            selector1>selector2 {}  //selector1元素的子元素selector2.必须是子元素。
+    7、兄弟选择器（新增）：  selector1~selector2 {}  //匹配selector1后面的、selector2兄弟元素。
+
+    8、伪元素选择器：        ：first-letter   //指定对象内的第一个字符
+                             ：first-line     //指定对象内的第一行内容起作用
+                             ：before         //指定对象的内部前端
+                             ：after          //指定对象的内部尾端
+
+    9、伪类选择器：（伪类前的selector可以省略使用，省略后selector不再作为匹配条件）
+
+             新增的特殊的：
+                             selector：target              //匹配符合selector选择器且必须是命名锚点目标的元素
+                             selector1：not(selector2)     //匹配符合selector1选择器，但不符合selector2选择器的元素，
+                                                             相当于用selector1减去selector2.
+
+         结构性伪类选择器：
+                             selector：root                //匹配文档的根元素。html文档中根元素永远是<html>
+                             selector：first-child         //匹配selector选择器的父元素的 第一个子节点元素。
+                             selector：last-child          //匹配selector选择器的父元素的 最后一个子节点元素。
+                             selector：nth-child(n)        //匹配selector选择器的父元素的 第n个子节点元素。
+                             selector：nth-last-child(n)   //匹配selector选择器的父元素的 倒数第n个子节点元素
+                             selector：only-child          //匹配selector选择器的父元素的 唯一的子节点元素。
+
+                             selector：first-of-type       //匹配与selector选择器同级、同类型的兄弟节点中的 第一个元素
+                             selector：last-of-type        //匹配与selector选择器同级、同类型的兄弟节点中的 最后一个元素
+                             selector: nth-of-type(n)      //匹配与selector选择器同级、同类型的兄弟节点中的 第n个元素
+                             selector: nth-last-of-type(n) //匹配与selector选择器同级、同类型的兄弟节点中的 倒数第n个元素
+                             selector: only-of-type(n)     //匹配与selector选择器同级、同类型的兄弟节点中   唯一的一个元素
+
+                             selector：empty               //匹配复合selector选择器且其内部没有任何子元素的元素。
+     UI元素状态伪类选择器：
+                             selector：link                 //匹配selector选择器且未被访问的元素。（通常只能是超链接）
+                             selector：visited              //匹配selector选择器且已被访问过的元素（通常只能是超链接）
+                             selector：active               //匹配selector选择器且处于被用户激活的元素（鼠标点击与释放之间）
+                                                              状态的元素
+                             selector：hover                //匹配selector选择器且处于鼠标悬停状态的元素
+                             selector：focus                //匹配selector选择器且已得到焦点的元素
+                             selector：enabled              //匹配selector选择器且当前处于可用状态的元素
+                             selector：disabled             //匹配selector选择器且当前处于不可用状态的元素
+                             selector: checked              //匹配selector选择器且当前处于选中状态的元素。
+                             selector：default              //匹配selector选择器且页面打开时处于选中状态的（即使当前未被选中）
+                                                              的元素
+                             selector；read-only            //匹配selector选择器且处于只读状态的元素
+                             selector；read-write           //匹配selector选择器且处于读写状态的元素
+                             selector；；selection          //匹配selector选择器的元素中当前被选中的内容
  
