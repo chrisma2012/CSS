@@ -96,7 +96,9 @@
 	      	                                               2、设置了display:-webkit-box 的容器里，其子元素的高度不
 	      	                                                  会再由其内容高度所决定，而是由父容器自动统一高度。？
 
-	      	-webkit-box-orient:horizontal;           //设置容器里元素的排列方向，注意 -webkit-前缀在这里不是必须的
+	      	-webkit-box-orient:horizontal;           //设置容器里元素的排列方向，注意 -webkit-前缀在这里不是必须的;
+	      	                                           在这里box-orient也不是必须的，因为设置了display：box后，默认为
+	      	                                           水平排列
 	      	width: 960px;
 	      	
 	      	background-color:pink;
