@@ -1,3 +1,3 @@
 ==DIV居中的几种方法==
-1、将DIV内元素的高line-height设置为与该DIV元素同高，然后通过vertical-align:middle居中
-2、将DIV元素设置为display：table-cell,然后通过text-align:center居中
+1、将DIV的子元素的高line-height设置为与该DIV元素同高，然后通过text-align:center居中
+2、将DIV设置为display：table-cell,然后通过text-align:center使该DIV内的子元素居中
